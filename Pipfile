@@ -9,6 +9,8 @@ autopep8 = "*"
 [packages]
 django = "==3.0.0"
 pillow = "*"
+django-rest-knox = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.7"

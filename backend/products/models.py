@@ -32,6 +32,10 @@ class Product(models.Model):
     #     _(""), choices=[("FIFO", "First In First Out"), ("LIFO", "Last In First Out")])
 
     is_active = models.BooleanField(_("IsActive"), default=True)
+    variants = models.ManyToManyField(
+        "products.VariantOption", verbose_name=_("Details"), related_name="products")
+    category = models.ForeignKey("products.category", verbose_name=_(
+        "Category"), related_name="products", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("Product")

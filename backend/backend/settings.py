@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from rest_framework.settings import api_settings
+from datetime import timedelta
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,7 +28,7 @@ SECRET_KEY = 'd%51%gf=*5hb^&ijw(ecw5g0n0$on@#mb8(8s+v*u$h@6pm9t#'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
@@ -37,11 +39,36 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 3rd party apps
+    'rest_framework',
+    'knox',
+
+    # my Apps
     'accounts.apps.AccountsConfig',
     'products.apps.ProductsConfig',
     'address.apps.AddressConfig',
 ]
 
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
+REST_KNOX = {
+    'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
+    'AUTH_TOKEN_CHARACTER_LENGTH': 64,
+    'TOKEN_TTL': timedelta(hours=10),
+    'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+    'TOKEN_LIMIT_PER_USER': None,
+    'AUTO_REFRESH': True,
+    'EXPIRY_DATETIME_FORMAT': api_settings.DATETIME_FORMAT,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

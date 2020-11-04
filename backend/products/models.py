@@ -12,7 +12,7 @@ from django.conf import settings
 
 
 class Product(models.Model):
-    owner = models.OneToOneField(
+    owner = models.ForeignKey(
         settings.AUTH_USER_MODEL, verbose_name=_(""), on_delete=models.CASCADE)
     brand = models.CharField(_("Brand Name"), max_length=50)   # Sha3rawy
     model = models.CharField(_("Model Name"), max_length=50)   # Egyptian

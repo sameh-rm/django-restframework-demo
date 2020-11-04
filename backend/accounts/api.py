@@ -1,10 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Permission, User
-from django.http import request
-from django.shortcuts import render
 from rest_framework import generics, permissions
-from rest_framework import serializers, permissions
-from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.response import Response
 from knox.models import AuthToken
 from .serializers import LoginSerializer, UserSerializer, RegisterSerializer

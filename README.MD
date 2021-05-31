@@ -58,13 +58,20 @@ You need **Python 3.7** pre installed.
     ```
     source tutorial-env/bin/activate
     ```
+* installing packages:
+  ```bash
+  pip install -r requirements.txt
+  ```
 
 - starting the project
-  cd to the backend folder and run the following command
 
   ```
-  python manage.py runserver
+  cd to the backend folder and run the following command
   ```
+
+python manage.py runserver
+
+```
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
@@ -84,3 +91,4 @@ See also the list of [contributors](https://github.com/kylelobo/The-Documentatio
 - Hat tip to anyone whose code was used
 - Inspiration
 - References
+```

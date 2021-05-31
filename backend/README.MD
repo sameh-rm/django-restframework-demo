@@ -1,4 +1,4 @@
-# Full Stack E-Commerce API Backend
+# Django RestFrameWork demo
 
 ## Getting Started
 

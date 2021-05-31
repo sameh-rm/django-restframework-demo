@@ -1,10 +1,19 @@
 from re import L
 from django.core.exceptions import ValidationError
-from django.views import generic
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.core.validators import validate_email
+
+from .models import Address
+
+
+class AddressSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Address
+        fields = "__all__"
+        # exclude = ("user",)
 
 
 class UserSerializer(serializers.ModelSerializer):

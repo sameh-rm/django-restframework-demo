@@ -46,7 +46,7 @@ POST '/api/auth/register'
 - Requires username, email, password:
 {
     "username":"jhon",
-    "email":"jhon@gmail.com",
+    "email":"jhon@mail.com",
     "password":"testPassword"
 }
 - Returns:
@@ -54,12 +54,14 @@ POST '/api/auth/register'
     "user": {
         "id": 4,
         "username": "jhon",
-        "email": "jhon@gmail.com"
+        "email": "jhon@mail.com"
     },
     "token": "64f2d9f88e93f612a0f376a39977b63b26955051b0e1d5c0ad0791d8ae83f71d"
 }
 - returned token is valid for 10 Hours by default can be changed in settings.py
+```
 
+```
 
 POST '/api/auth/login'
 - Requiers username, password:
@@ -69,28 +71,61 @@ POST '/api/auth/login'
 }
 - Returns:
 {
-    "user": { 
+    "user": {
         "id": 4,
         "username": "jhon",
-        "email": "jhon@gmail.com"
+        "email": "jhon@mail.com"
     },
     "token": "9157a4beccf4485c567619984612d1f654f1ccfdbd763064f1a464c66163afc1"
 }
+```
 
+```
 POST '/api/auth/logout'
 - logout from the current device
 - Requires  *Header {"Authorization" : "Token 9157a4beccf4485c567619984612d1f654f1ccfdbd763064f1a464c66163afc1"}
+```
 
+```
 POST '/api/auth/logoutall'
 - logout form all devices
 - Requires  *Header {"Authorization" : "Token 9157a4beccf4485c567619984612d1f654f1ccfdbd763064f1a464c66163afc1"}
+```
 
+```
 GET '/api/auth/user'
 - Fetchs the quizzes of a sepcifec user
 - Requires *Header {"Authorization" : "Token 9157a4beccf4485c567619984612d1f654f1ccfdbd763064f1a464c66163afc1"}
 - Returns:{
     "id": 4,
     "username": "jhon",
-    "email": "jhon@gmail.com"
+    "email": "jhon@mail.com"
+}
+```
+
+### Address's
+
+```json
+POST '/api/auth/user/address/'
+- Creates A new Address
+- Requires *Header {"Authorization" : "Token 9157a4beccf4485c567619984612d1f654f1ccfdbd763064f1a464c66163afc1"}:
+{
+    "street_address": "2614  Drive",
+    "apartment_address": "102",
+    "city": "Charleston",
+    "country": "US",
+    "phone": "304-836-8651",
+    "fax": "",
+    "is_shipping_address": true,
+    "is_Billing_address": true
+}
+- Returns:
+{
+    "user": {
+        "id": 4,
+        "username": "jhon",
+        "email": "jhon@mail.com"
+    },
+    "token": "64f2d9f88e93f612a0f376a39977b63b26955051b0e1d5c0ad0791d8ae83f71d"
 }
 ```

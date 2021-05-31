@@ -14,7 +14,6 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
 
     def get_permissions(self):
-        print("action:", self.action)
         if self.action in ('create', 'update', 'destroy', 'patch'):
             self.permission_classes = [permissions.IsAdminUser, ]
         return super(self.__class__, self).get_permissions()

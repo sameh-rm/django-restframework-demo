@@ -40,7 +40,7 @@ python manage.py runserver
 
 ### Users
 
-####### [POST] '/api/auth/register'
+###### [POST] '/api/auth/register'
 
 ```json
 - Creates A new user
@@ -59,8 +59,9 @@ python manage.py runserver
     },
     "token": "64f2d9f88e93f612a0f376a39977b63b26955051b0e1d5c0ad0791d8ae83f71d"
 }
-- returned token is valid for 10 Hours by default can be changed in settings.py
 ```
+
+- returned token is valid for 10 Hours by default can be changed in settings.py
 
 ###### [POST] '/api/auth/login'
 
